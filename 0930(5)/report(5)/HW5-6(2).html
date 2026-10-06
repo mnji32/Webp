@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>animation</title>
+</head>
+<style>
+    img {
+        animation-name: rotation;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(-90deg);
+        }
+
+        50% {
+            transform: rotate(90deg);
+        }
+
+        100% {
+            transform: rotate(-90deg);
+        }
+    }
+</style>
+
+<body>
+    <h3>어지러워요</h3>
+    <hr>
+    <img src="spongebob.jpg">
+</body>
+
+</html>
