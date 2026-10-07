@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>윤년 확인</title>
+</head>
+<body>
+	<script>
+		const input = prompt("연도를 입력하세요.");
+		const year = Number(input);
+
+		if (input !== null && input.trim() !== "" && Number.isInteger(year) && year > 0) {
+			const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+			alert(isLeapYear ? `${year}년은 윤년입니다.` : `${year}년은 윤년이 아닙니다.`);
+		} else {
+			alert("올바른 연도를 입력하세요.");
+		}
+	</script>
+</body>
+</html>
