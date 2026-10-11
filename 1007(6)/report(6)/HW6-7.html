@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>큰 자리수와 낮은 자리수</title>
+</head>
+
+<body>
+    <h3>큰 자리수와 낮은자리수 같은지 비교</h3>
+    <hr>
+    <script>
+        let n = prompt("숫자 입력");
+        n = parseInt(n);
+
+        // 가장 낮은 자리수
+        let low = n % 10;
+
+        let temp = n;
+        // 가장 큰 자리수
+        while (temp >= 10) {
+            temp = Math.floor(temp / 10);
+        }
+        let high = temp;
+
+        if (low == high) {
+            document.write(n + ": 성공");
+        }
+        else {
+            document.write(n + ": 다름");
+        }
+    </script>
+</body>
+
+</html>
