@@ -9,7 +9,7 @@
   * **코어 객체 (Core Objects)**: 자바스크립트 언어가 기본 제공하는 표준 객체 (`Array`, `Date`, `String`, `Math` 등)
   * **HTML DOM 객체**: HTML 문서의 각 태그 요소들을 객체화한 것 (페이지 제어용)
   * **브라우저 객체 (BOM)**: 브라우저 환경을 제어하기 위한 객체 (`window`, `location`, `history` 등)
-* **객체 생성 및 접근**:
+* **객체 생성 및 접근**
   * `new` 키워드를 사용하여 생성: `let today = new Date();`
   * 점(`.`) 연산자를 통해 접근: `today.getFullYear();`
 
@@ -80,7 +80,7 @@
 * **난수 활용 예시 (0~99 사이의 정수)**:
   ```javascript
   let randInt = Math.floor(Math.random() * 100);
-
+     ```
   ---
 
 ### 6. 사용자 객체 만들기
