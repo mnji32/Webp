@@ -1,2 +1,2 @@
 ## Chap8 HTML DOM과 Document
-예제코드
+예제 코드
