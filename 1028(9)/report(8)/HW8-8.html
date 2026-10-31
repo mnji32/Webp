@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>transform:rotate()</title>
+    <script>
+        let count = 1;
+        function change(obj) {
+            count++;
+            if (count > 4) {
+                count = 1;
+            }
+            obj.style.transform = "scale(" + count + ", 1)";
+        }
+    </script>
+</head>
+
+<body>
+    <h3>클릭하면 2,3,4배로 옆으로 늘어납니다.</h3>
+    <hr>
+    <img src="spongebob.jpg" onclick="change(this)">
+</body>
+
+</html>
