@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>계산기 만들기</title>
+    <style>
+        h3 {
+            margin-bottom: 4px;
+        }
+
+        #output {
+            width: 450px;
+            padding: 4px;
+            font-size: 16px;
+        }
+
+        .pad {
+            margin-top: 8px;
+            border-spacing: 30px 4px;
+        }
+
+        .pad button {
+            width: 80px;
+            height: 28px;
+        }
+    </style>
+    <script>
+        let output;
+
+        window.onload = function () {
+            output = document.getElementById("output");
+            output.value = "0";
+        };
+
+        function addChar(c) {
+            output.value = (output.value == "0" && c != ".") ? c : output.value + c;
+        }
+
+        function result() {
+            try {
+                output.value = eval(output.value);
+            } catch (e) {
+                output.value = "오류";
+            }
+        }
+
+        function del() {
+            let now = output.value.slice(0, -1);
+            output.value = now.length == 0 ? "0" : now;
+        }
+
+        function reset() {
+            output.value = "0";
+        }
+    </script>
+</head>
+
+<body>
+    <h3>계산기 만들기</h3>
+    <hr>
+    <input type="text" id="output" readonly>
+    <table class="pad">
+        <tr>
+            <td><button onclick="del()">BACK</button></td>
+            <td><button onclick="reset()">CE</button></td>
+            <td><button onclick="reset()">C</button></td>
+            <td><button onclick="result()">=</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addChar('7')">7</button></td>
+            <td><button onclick="addChar('8')">8</button></td>
+            <td><button onclick="addChar('9')">9</button></td>
+            <td><button onclick="addChar('/')">/</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addChar('4')">4</button></td>
+            <td><button onclick="addChar('5')">5</button></td>
+            <td><button onclick="addChar('6')">6</button></td>
+            <td><button onclick="addChar('*')">*</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addChar('1')">1</button></td>
+            <td><button onclick="addChar('2')">2</button></td>
+            <td><button onclick="addChar('3')">3</button></td>
+            <td><button onclick="addChar('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addChar('0')">0</button></td>
+            <td><button onclick="addChar('+')">+</button></td>
+            <td><button>NONE</button></td>
+            <td><button>NONE</button></td>
+        </tr>
+    </table>
+</body>
+
+</html>

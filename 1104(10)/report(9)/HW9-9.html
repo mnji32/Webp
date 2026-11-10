@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>onmouseover과 onmouseout</title>
+    <script>
+        let descriptions = [
+            "빨간 자전거를 타고 서울, 대전, 대구, 부산 찍고 목포, 인천을 거쳐 달린다",
+            "여러 장르의 책 읽기",
+            "수영, 사이클, 마라톤 열심히 준비하기",
+            "예제 문제를 같이 작성해보고 연습 문제 직접 풀어보기"
+        ];
+        let tooltip;
+
+        function init() {
+            tooltip = document.getElementById("tooltip");
+
+            let items = document.getElementsByTagName("li");
+            for (let i = 0; i < items.length; i++) {
+                items[i].addEventListener("mouseover", show, false);
+                items[i].addEventListener("mouseout", hide, false);
+            }
+        }
+
+        function show(e) {
+            let index = 0;
+            switch (e.target.id) {
+                case "li0": index = 0; break;
+                case "li1": index = 1; break;
+                case "li2": index = 2; break;
+                case "li3": index = 3; break;
+            }
+            draw(descriptions[index], e);
+        }
+
+        function draw(message, e) {
+            tooltip.innerHTML = message;
+            tooltip.style.left = e.clientX + "px";
+            tooltip.style.top = e.clientY + "px";
+            tooltip.style.border = "1px solid yellowgreen";
+            tooltip.style.background = "aliceblue";
+            tooltip.style.visibility = "visible";
+            tooltip.style.width = "200px";
+            tooltip.style.height = "80px";
+        }
+
+        function hide() {
+            tooltip.style.visibility = "hidden";
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <h3>아이템에 마우스를 올리면 설명 출력</h3>
+    <hr>
+    <p>여름 방학 때 하고 싶은 것들</p>
+    <ul>
+        <li id="li0">자전거로 대한민국 일주</li>
+        <li id="li1">책 100권 읽기</li>
+        <li id="li2">철인 3종 경기 준비</li>
+        <li id="li3">자바스크립트 정복</li>
+    </ul>
+    <div id="tooltip" style="position: absolute"></div>
+</body>
+
+</html>
