@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>사이트 접속</title>
+    <script>
+        function load() {
+            let select = document.getElementById("site");
+            let url = select.options[select.selectedIndex].value;
+            window.open(url, "newpage", "width=500, height=200");
+        }
+    </script>
+</head>
+
+<body>
+    <h3>옵션 선택으로 사이트 접속</h3>
+    옵션 선택 마다 새 윈도우에 접속합니다.
+    <hr>
+    <form>
+        <p>접속할 사이트</p>
+        <select id="site" onchange="load()">
+            <option value="https://www.naver.com">네이버
+            <option value="https://www.google.com">구글
+            <option value="https://www.oracle.com">오라클
+        </select>
+    </form>
+</body>
+
+</html>

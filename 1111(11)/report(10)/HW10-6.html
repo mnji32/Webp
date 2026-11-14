@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>setInterval()/clearInterval()</title>
+    <style>
+        div {
+            display: inline-block;
+            background-color: aliceblue;
+            border: 1px solid gray;
+            width: 7em;
+        }
+    </style>
+    <script>
+        let timer = null;
+        let box;
+
+        function start() {
+            box = document.getElementById("clock");
+            show();
+            timer = setInterval(show, 1000);
+        }
+
+        function show() {
+            box.innerHTML = new Date().toLocaleTimeString();
+        }
+
+        function onoff() {
+            if (timer != null) {
+                clearInterval(timer);
+                timer = null;
+                box.style.color = "gray";
+            }
+            else {
+                show();
+                timer = setInterval(show, 1000);
+                box.style.color = "black";
+            }
+        }
+    </script>
+</head>
+
+<body onload="start()">
+    <h3>div 태그에 시계 만들기</h3>
+    시계를 클릭하면 시계가 멈추고 다시 클릭하면 가기 시작한다.
+    <hr>
+    <div id="clock" onclick="onoff()"></div>
+</body>
+
+</html>
