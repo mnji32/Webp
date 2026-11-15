@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>산수를 풀어 봅시다</title>
+    <style>
+        .question {
+            display: inline-block;
+            width: 5em;
+        }
+
+        #score {
+            margin-left: 35px;
+        }
+    </style>
+    <script>
+        function check() {
+            let score = 0;
+
+            for (let i = 1; i <= 4; i++) {
+                let q = document.getElementById("q" + i);
+                let a = document.getElementById("answer" + i).value;
+
+                if (a == eval(q.innerHTML)) {
+                    score = score + 1;
+                    q.style.textDecoration = "none";
+                } else {
+                    q.style.textDecoration = "line-through";
+                }
+            }
+
+            document.getElementById("score").innerHTML = score;
+        }
+    </script>
+</head>
+
+<body>
+    <h3>산수 문제를 풀어 봅시다.</h3>
+    수식을 계산하여 답을 입력하고 채점 버튼을 누르세요.
+    <hr>
+    <div><span class="question" id="q1">5*6</span><input id="answer1" size="8"></div>
+    <div><span class="question" id="q2">7+5*3</span><input id="answer2" size="8"></div>
+    <div><span class="question" id="q3">23*2</span><input id="answer3" size="8"></div>
+    <div><span class="question" id="q4">35-7</span><input id="answer4" size="8"></div>
+    <button onclick="check()">채점</button>
+    <span id="score">0</span>
+</body>
+
+</html>

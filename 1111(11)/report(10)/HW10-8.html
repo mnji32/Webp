@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>산수를 풀어 봅시다</title>
+    <style>
+        .question {
+            display: inline-block;
+            width: 5em;
+        }
+
+        #score {
+            margin-left: 35px;
+        }
+    </style>
+    <script>
+        let timerID = null;
+        let time = 10;
+
+        function make() {
+            let ops = ["+", "-", "*", "/"];
+
+            for (let i = 1; i <= 4; i++) {
+                let a = Math.floor(Math.random() * 20) + 1;
+                let b = Math.floor(Math.random() * 20) + 1;
+                let op = ops[Math.floor(Math.random() * 4)];
+
+                if (op == "-" && a < b) {
+                    let temp = a;
+                    a = b;
+                    b = temp;
+                }
+
+                let q = document.getElementById("q" + i);
+                q.innerHTML = a + op + b;
+                q.style.textDecoration = "none";
+                document.getElementById("answer" + i).value = "";
+            }
+
+            document.getElementById("score").innerHTML = 0;
+
+            if (timerID != null)
+                clearInterval(timerID);
+            time = 10;
+            document.getElementById("time").innerHTML = time;
+            timerID = setInterval("countDown()", 1000);
+        }
+
+        function countDown() {
+            time = time - 1;
+            document.getElementById("time").innerHTML = time;
+
+            if (time == 0) {
+                clearInterval(timerID);
+                check();
+            }
+        }
+
+        function check() {
+            let score = 0;
+
+            for (let i = 1; i <= 4; i++) {
+                let q = document.getElementById("q" + i);
+                let a = document.getElementById("answer" + i).value;
+                let correct = parseInt(eval(q.innerHTML));
+
+                if (a != "" && a == correct) {
+                    score = score + 1;
+                    q.style.textDecoration = "none";
+                } else {
+                    q.style.textDecoration = "line-through";
+                }
+            }
+
+            document.getElementById("score").innerHTML = score;
+        }
+    </script>
+</head>
+
+<body onload="make()">
+    <h3>산수 문제를 풀어 봅시다.</h3>
+    문제는 자동으로 생성되며, 10초가 지나면 자동 채점됩니다.<br>
+    남은 시간 <span id="time">10</span>
+    <hr>
+    <div><span class="question" id="q1"></span><input id="answer1" size="8"></div>
+    <div><span class="question" id="q2"></span><input id="answer2" size="8"></div>
+    <div><span class="question" id="q3"></span><input id="answer3" size="8"></div>
+    <div><span class="question" id="q4"></span><input id="answer4" size="8"></div>
+    <button onclick="make()">다시</button>
+    <span id="score">0</span>
+</body>
+
+</html>

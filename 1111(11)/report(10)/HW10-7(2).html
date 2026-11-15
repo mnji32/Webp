@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>산수를 풀어 봅시다</title>
+    <style>
+        .question {
+            display: inline-block;
+            width: 5em;
+        }
+
+        #score {
+            margin-left: 35px;
+            margin-right: 30px;
+        }
+    </style>
+    <script>
+        function make() {
+            let ops = ["+", "-", "*", "/"];
+
+            for (let i = 1; i <= 4; i++) {
+                let a = Math.floor(Math.random() * 20) + 1;
+                let b = Math.floor(Math.random() * 20) + 1;
+                let op = ops[Math.floor(Math.random() * 4)];
+
+                if (op == "-" && a < b) {
+                    let temp = a;
+                    a = b;
+                    b = temp;
+                }
+
+                let q = document.getElementById("q" + i);
+                q.innerHTML = a + op + b;
+                q.style.textDecoration = "none";
+                document.getElementById("answer" + i).value = "";
+            }
+
+            document.getElementById("score").innerHTML = 0;
+        }
+
+        function check() {
+            let score = 0;
+
+            for (let i = 1; i <= 4; i++) {
+                let q = document.getElementById("q" + i);
+                let a = document.getElementById("answer" + i).value;
+                let correct = parseInt(eval(q.innerHTML));
+
+                if (a != "" && a == correct) {
+                    score = score + 1;
+                    q.style.textDecoration = "none";
+                } else {
+                    q.style.textDecoration = "line-through";
+                }
+            }
+
+            document.getElementById("score").innerHTML = score;
+        }
+    </script>
+</head>
+
+<body onload="make()">
+    <h3>산수 문제를 풀어 봅시다.</h3>
+    자동으로 문제가 만들어집니다. 답 입력 후 채점 버튼을 누르세요.
+    다시 버튼을 누르면 새로운 문제가 출력됩니다. 나누기 결과는 정수입니다.
+    <hr>
+    <div><span class="question" id="q1"></span><input id="answer1" size="8"></div>
+    <div><span class="question" id="q2"></span><input id="answer2" size="8"></div>
+    <div><span class="question" id="q3"></span><input id="answer3" size="8"></div>
+    <div><span class="question" id="q4"></span><input id="answer4" size="8"></div>
+    <button onclick="check()">채점</button>
+    <span id="score">0</span>
+    <button onclick="make()">다시</button>
+</body>
+
+</html>

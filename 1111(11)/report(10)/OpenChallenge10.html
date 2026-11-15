@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>눈 내리는 사갈의 마을</title>
+    <style>
+        body {
+            background-image: url("snow.jpg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        .snow {
+            position: absolute;
+            color: white;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let snowCount = 30;
+
+        for (let i = 0; i < snowCount; i++) {
+            let x = Math.floor(Math.random() * (window.innerWidth - 30));
+            let y = Math.floor(Math.random() * (window.innerHeight - 30));
+            document.write("<div class='snow' id='snow" + i + "' style='left:" + x + "px; top:" + y + "px'>*</div>");
+        }
+
+        setInterval("fall()", 100);
+
+        function fall() {
+            for (let i = 0; i < snowCount; i++) {
+                let s = document.getElementById("snow" + i);
+                let y = s.offsetTop + 5;
+
+                if (y > window.innerHeight - 30) {
+                    y = Math.floor(Math.random() * 100);
+                    s.style.left = Math.floor(Math.random() * (window.innerWidth - 30)) + "px";
+                }
+
+                s.style.top = y + "px";
+            }
+        }
+    </script>
+</body>
+
+</html>
