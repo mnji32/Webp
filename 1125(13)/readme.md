@@ -9,7 +9,7 @@
 나의 취미는 산책하기와 음악 듣기야.
 code.gs와 index.html 만들어줘.
 
-> https://url.kr/6tx6c4
+> https://url.kr/dfxjnt
 
 #### [11월 25일 저녁 신청 받기_프롬프트]
 11월 25일 점심메뉴 신청 관련 웹앱을 개발하려고 해.
